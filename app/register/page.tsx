@@ -12,8 +12,21 @@ import { Separator } from "@/components/ui/separator"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { createOrder, verifyPayment } from "../actions/payment"
 import Script from "next/script"
+import React, { Suspense } from "react"
+
+// Fallback component for Suspense
+const SuspenseFallback = () => <div>Loading...</div>
 
 export default function RegisterPage() {
+  return (
+    // Wrap the main content with Suspense and provide a fallback UI
+    <Suspense fallback={<SuspenseFallback />}>
+      <RegisterForm />
+    </Suspense>
+  )
+}
+
+function RegisterForm() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const initialParamsLoaded = useRef(false)
@@ -351,4 +364,3 @@ export default function RegisterPage() {
     </>
   )
 }
-
