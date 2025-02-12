@@ -1,38 +1,39 @@
 "use client"
-import React, { Suspense } from 'react';
-import { useSearchParams } from "next/navigation";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
-import { Confetti } from "@/components/ui/confetti";
 
-// A fallback component to show while waiting for Suspense to resolve
-const SuspenseFallback = () => <div>Loading...</div>;
+import { useSearchParams } from "next/navigation"
+import { useRouter } from "next/navigation"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Confetti } from "@/components/ui/confetti"
+import React, { Suspense } from "react"
+
+// Fallback component for Suspense
+const SuspenseFallback = () => <div>Loading...</div>
 
 export default function ConfirmationPage() {
   return (
-    // Wrap the component with Suspense and provide a fallback
+    // Wrap the ConfirmationPage content in Suspense
     <Suspense fallback={<SuspenseFallback />}>
       <ConfirmationContent />
     </Suspense>
-  );
+  )
 }
 
 function ConfirmationContent() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
+  const searchParams = useSearchParams()
+  const router = useRouter()
 
-  const sport = searchParams.get("sport") || "";
-  const batch = searchParams.get("batch") || "";
-  const timing = searchParams.get("timing") || "";
-  const level = searchParams.get("level") || "";
+  const sport = searchParams.get("sport") || ""
+  const batch = searchParams.get("batch") || ""
+  const timing = searchParams.get("timing") || ""
+  const level = searchParams.get("level") || ""
 
   // Calculate the start date (assuming it's always the first day of the batch)
-  const batchStartDate = new Date("2025-06-01"); // Example start date for summer camp 2025
+  const batchStartDate = new Date("2025-06-01") // Example start date for summer camp 2025
 
   const handleBackToHome = () => {
-    router.push("/");
-  };
+    router.push("/")
+  }
 
   return (
     <div className="container mx-auto px-4 py-16">
@@ -71,5 +72,5 @@ function ConfirmationContent() {
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }
