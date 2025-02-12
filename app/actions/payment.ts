@@ -1,4 +1,4 @@
-"use server"
+
 
 import Razorpay from "razorpay"
 import mysql from "mysql2/promise"

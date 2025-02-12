@@ -199,7 +199,160 @@ function RegisterForm() {
                     <span className="block sm:inline">{error}</span>
                   </div>
                 )}
-                {/* Form content goes here */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold">Personal Information</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="childName">Child's Name</Label>
+                      <Input
+                        id="childName"
+                        name="childName"
+                        value={formData.childName}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="childStandard">Child's Standard</Label>
+                      <Input
+                        id="childStandard"
+                        name="childStandard"
+                        value={formData.childStandard}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="fatherName">Father's Name</Label>
+                      <Input
+                        id="fatherName"
+                        name="fatherName"
+                        value={formData.fatherName}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="motherName">Mother's Name</Label>
+                      <Input
+                        id="motherName"
+                        name="motherName"
+                        value={formData.motherName}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="address">Address</Label>
+                    <Textarea id="address" name="address" value={formData.address} onChange={handleChange} required />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email</Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Gender</Label>
+                    <RadioGroup
+                      name="gender"
+                      onValueChange={(value) => handleSelectChange("gender", value)}
+                      required
+                      className="flex space-x-4"
+                    >
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="male" id="male" />
+                        <Label htmlFor="male">Male</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="female" id="female" />
+                        <Label htmlFor="female">Female</Label>
+                      </div>
+                    </RadioGroup>
+                  </div>
+                </div>
+
+                <Separator />
+
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold">Contact Information</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="phoneNumber">Phone Number</Label>
+                      <Input
+                        id="phoneNumber"
+                        name="phoneNumber"
+                        type="tel"
+                        value={formData.phoneNumber}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="emergencyPhoneNumber">Emergency Phone Number</Label>
+                      <Input
+                        id="emergencyPhoneNumber"
+                        name="emergencyPhoneNumber"
+                        type="tel"
+                        value={formData.emergencyPhoneNumber}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <Separator />
+
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold">Medical Information</h3>
+                  <div className="space-y-2">
+                    <Label htmlFor="medicalConditions">Medical Conditions (if any)</Label>
+                    <Textarea
+                      id="medicalConditions"
+                      name="medicalConditions"
+                      value={formData.medicalConditions}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+
+                <Separator />
+
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold">Program Details</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="sport">Sport</Label>
+                      <Input id="sport" name="sport" value={formData.sport} readOnly />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="timing">Timing</Label>
+                      <Input id="timing" name="timing" value={formData.timing} readOnly />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="batch">Batch</Label>
+                      <Input id="batch" name="batch" value={formData.batch} readOnly />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="type">Type</Label>
+                      <Input id="type" name="type" value={formData.type} readOnly />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="fee">Fee</Label>
+                    <Input id="fee" name="fee" value={formData.fee} readOnly />
+                  </div>
+                </div>
+
                 <Button type="submit" className="w-full" disabled={isLoading}>
                   {isLoading ? "Processing..." : "Complete Registration"}
                 </Button>
