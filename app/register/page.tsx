@@ -14,7 +14,7 @@ import { createOrder, verifyPayment } from "../actions/payment"
 import Script from "next/script"
 import React, { Suspense } from "react"
 
-// Suspense fallback component for loading state
+// Fallback component for Suspense
 const SuspenseFallback = () => <div>Loading...</div>
 
 export default function RegisterPage() {
